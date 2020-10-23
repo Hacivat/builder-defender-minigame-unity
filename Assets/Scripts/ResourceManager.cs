@@ -39,4 +39,8 @@ public class ResourceManager : MonoBehaviour
     public void AddResource(ResourceTypeSO resourceType, int amount) {
         resourceAmountDictionary[resourceType] += amount;        
     }
+
+    public int GetResourceAmount(ResourceTypeSO resourceType) {
+        return resourceAmountDictionary[resourceType];
+    }
 }
