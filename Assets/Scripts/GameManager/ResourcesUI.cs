@@ -26,6 +26,12 @@ public class ResourcesUI : MonoBehaviour
             resourceTransform.GetChild(0).GetComponent<Image>().sprite = resourceType.sprite;
             index++;
         }
+
+        ResourceManager.Instance.OnResourceChangedEvent += ResourceUIListenTo_OnResourceChangedEvent; 
+    }
+
+    private void ResourceUIListenTo_OnResourceChangedEvent(object sender, System.EventArgs e) {
+        UpdateResourceAmount();
     }
 
     private void Start () {
