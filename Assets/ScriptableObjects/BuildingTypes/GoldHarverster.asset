@@ -15,5 +15,6 @@ MonoBehaviour:
   nameString: 
   prefab: {fileID: 7026783794279177139, guid: 5e8b5dca93446984dac982d8e23b3e0c, type: 3}
   resourceGeneratorData:
-    timerMax: 0
+    timerMax: 2
     resourceType: {fileID: 11400000, guid: adbf8d1408972aa4383ab0dcddfb62cd, type: 2}
+  sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
