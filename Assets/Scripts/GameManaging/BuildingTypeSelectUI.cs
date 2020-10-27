@@ -5,10 +5,8 @@ using UnityEngine.UI;
 
 public class BuildingTypeSelectUI : MonoBehaviour
 {
-    
     [SerializeField] private Sprite arrowSprite;
-    [SerializeField] private Transform buttonTemplate;
-    
+    [SerializeField] private Transform buttonTemplate;   
     
     private Transform arrowButton;
     private BuildingTypeListSO buildingTypeList;
@@ -29,7 +27,6 @@ public class BuildingTypeSelectUI : MonoBehaviour
         float offsetAmount = 130f;
         arrowButton.GetComponent<RectTransform>().anchoredPosition = new Vector2(offsetAmount * index, 0);
         arrowButton.GetChild(1).GetComponent<Image>().sprite = arrowSprite;
-        //arrowButton.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(0, -10);
 
         Vector3 arrowScale = arrowButton.GetChild(1).GetComponent<RectTransform>().localScale;
         arrowButton.GetChild(1).GetComponent<RectTransform>().localScale = new Vector3(arrowScale.x * .5f, arrowScale.y * .5f, 0);
@@ -37,7 +34,6 @@ public class BuildingTypeSelectUI : MonoBehaviour
         arrowButton.GetComponent<Button>().onClick.AddListener(() => {
             BuildingManager.Instance.SetActiveBuildingType(null);
         });
-
         index++;
 
         foreach (BuildingTypeSO buildingType in buildingTypeList.list) {
@@ -59,7 +55,12 @@ public class BuildingTypeSelectUI : MonoBehaviour
         }
     }
 
-    private void Update () {
+    private void Start () {
+        UpdateActiveBuildingTypeButton();
+        BuildingManager.Instance.OnActiveBuildingTypeChanged += BuildingTypeSelectUIListenTo_OnActiveBuildingTypeChanged;
+    }
+
+    private void BuildingTypeSelectUIListenTo_OnActiveBuildingTypeChanged(object sender, System.EventArgs e) {
         UpdateActiveBuildingTypeButton();
     }
 
